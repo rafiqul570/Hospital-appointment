@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +18,6 @@
     <meta property="og:url" content="http://themepixels.me/starlight">
     <meta property="og:title" content="Starlight">
     <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
-
     <meta property="og:image" content="http://themepixels.me/starlight/img/starlight-social.png">
     <meta property="og:image:secure_url" content="http://themepixels.me/starlight/img/starlight-social.png">
     <meta property="og:image:type" content="image/png">
@@ -29,23 +29,26 @@
     <meta name="author" content="ThemePixels">
     <title>ECOMMERCE</title>
 
+   
+    <link rel="stylesheet" href=" https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
+
+
     <!-- vendor css -->
     <link href="{{asset('backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/Ionicons/css/ionicons.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/highlightjs/github.css')}}" rel="stylesheet">
-    <link href="{{asset('backend/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/medium-editor/medium-editor.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/medium-editor/default.css')}}" rel="stylesheet">
-    <link href="{{asset('backend/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
-
     <link href="{{asset('backend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{asset('backend/css/starlight.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/header.css')}}">
     
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
   </head>
 
@@ -68,11 +71,11 @@
         if($role == '1'){
         ?>
 
-         <a href="../index.php" target="_blank" class="sl-menu-link">
+         <!-- <a href="../index.php" target="_blank" class="sl-menu-link">
           <div class="sl-menu-item">
             <span class="menu-item-label">Visite Site</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
+          </div>
+        </a> -->
 
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -81,20 +84,22 @@
           </div>
         </a>
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('admin.category.create')}}" class="nav-link">Add Category</a></li>
-          <li class="nav-item"><a href="{{route('admin.category.index')}}" class="nav-link">All Category</a></li>
+          <li class="nav-item"><a href="{{route('category.create')}}" class="nav-link">Add Category</a></li>
+          <li class="nav-item"><a href="{{route('category.index')}}" class="nav-link">All Category</a></li>
         </ul>
 
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
-            <span class="menu-item-label">Product</span>
+            <span class="menu-item-label">Patient</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div>
         </a>
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('admin.product.create')}}" class="nav-link">Add Product</a></li>
-          <li class="nav-item"><a href="{{route('admin.product.index')}}" class="nav-link">All Product</a></li>
+          <li class="nav-item"><a href="{{route('appointment.create')}}" class="nav-link">Add Patient</a></li>
+          <li class="nav-item"><a href="{{route('appointment.index')}}" class="nav-link">All Product</a></li>
         </ul>
+
+
 
 
        <?php }else{ ?>
@@ -126,49 +131,44 @@
     </div><!-- sl-sideleft -->
     <!-- ########## END: LEFT PANEL ########## -->
 
-    <!-- ########## START: HEAD PANEL ########## -->
-     <div class="sl-header">
+      <!-- ########## START: HEAD PANEL ########## -->
+    <div class="sl-header">
       <div class="sl-header-left">
         <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
         <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
       </div><!-- sl-header-left -->
-      <!-- <span class="text-uppercase logged-name text-light mr-3">{{ Auth::user()->name }}</span> -->
-      <div class="sl-header-right" style="margin-right: 40px;">
+      <div class="sl-header-right">
         <nav class="nav">
-          <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 hover:text-light-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+          <div class="dropdown">
+            <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+              <span class="logged-name">{{ Auth::user()->name }}</span>
+              
+            </a>
+            <div class="dropdown-menu dropdown-menu-header wd-200 bg-dark">
+              <ul class="list-unstyled user-profile-nav">
+                
+                <li><a href="{{route('profile.edit')}}"><i class="icon ion-ios-person-outline"></i> 
+                  {{ __('Profile') }}
+                </a></li>
+                
+                
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                <li>
+                  @csrf
+                  <a href="route('logout')"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();"><i class="icon ion-power"></i> Sign Out</a>
+                </li>
+                </form>
 
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+              </ul>
+            </div><!-- dropdown-menu -->
+          </div><!-- dropdown -->
         </nav>
+        <div class="navicon-right">
+          
+        </div><!-- navicon-right -->
       </div><!-- sl-header-right -->
     </div><!-- sl-header -->
   <!-- ########## END: HEAD PANEL ########## -->

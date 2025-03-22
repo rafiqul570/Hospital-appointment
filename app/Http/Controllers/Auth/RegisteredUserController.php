@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
     public function create(): View
-    {
+    {                                   
         return view('auth.register');
     }
 
@@ -44,7 +44,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // $user = attachRole('0');
 
         event(new Registered($user));
 
