@@ -16,7 +16,6 @@
     <script src="{{asset('backend/js/dashboard.js')}}"></script>
     <script src="{{asset('backend/js/main.js')}}"></script>
    
-    
 
     <script>
       new DataTable('#datatable', {

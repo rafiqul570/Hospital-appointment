@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">ConsultNow</a>
+            <a class="navbar-brand" href="{{route('appointment.index')}}">ConsultNow</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,7 +59,7 @@
     <section class="bg-light py-5">
         <div class="container">
             <h2 class="text-center mb-4">Our Services</h2>
-            <div class="row">
+            <div class="row gy-4">
                 <div class="col-md-4" style="overflow: hidden;">
                     <div class="card shadow-sm">
                         <div class="card-body text-center">

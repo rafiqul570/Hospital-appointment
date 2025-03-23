@@ -1,32 +1,60 @@
 
-
 @extends('admin.layouts.template')
-
 @section('content')
+<div class="container card p-5">
+    <h2>Edit Profile</h2>
 
-<!-- laravel CSS JS -->
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-<div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
+    <!-- Update Profile -->
+    <form action="{{ route('profile.update') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}" class="form-control">
+            @error('name') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
-    </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ old('email', auth()->user()->email) }}" class="form-control">
+            @error('email') <small class="text-danger">{{ $message }}</small> @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
 
+    <hr>
+
+    <!-- Update Password -->
+    <h4>Change Password</h4>
+    <form action="{{ route('profile.updatePassword') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label>Current Password:</label>
+            <input type="password" name="current_password" class="form-control">
+            @error('current_password') <small class="text-danger">{{ $message }}</small> @enderror
+        </div>
+        <div class="mb-3">
+            <label>New Password:</label>
+            <input type="password" name="password" class="form-control">
+            @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+        </div>
+        <div class="mb-3">
+            <label>Confirm New Password:</label>
+            <input type="password" name="password_confirmation" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-warning">Update Password</button>
+    </form>
+
+    <hr>
+
+    <!-- Delete Profile -->
+    <h4>Delete Profile</h4>
+    <form action="{{ route('profile.destroy') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure? This action cannot be undone.')">Delete Profile</button>
+    </form>
+</div>
 @endsection
+

@@ -47,8 +47,6 @@
     <link rel="stylesheet" href="{{asset('backend/css/header.css')}}">
     
     
-    
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
   </head>
 
@@ -98,9 +96,6 @@
           <li class="nav-item"><a href="{{route('appointment.create')}}" class="nav-link">Add Patient</a></li>
           <li class="nav-item"><a href="{{route('appointment.index')}}" class="nav-link">All Product</a></li>
         </ul>
-
-
-
 
        <?php }else{ ?>
           <label class="sidebar-label"></label>
