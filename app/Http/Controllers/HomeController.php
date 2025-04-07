@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\appointmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,13 +20,6 @@ class HomeController extends Controller
 
 
     }
-
-
-
-      public function HomePage(){
- 
-        return view('homePage');
-        }
     
 
     

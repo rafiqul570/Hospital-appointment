@@ -25,23 +25,28 @@ class appointmentController extends Controller
     public function Store(Request $request){
 
             $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'department' => 'required',
             'doctor' => 'required',
             'date' => 'required',
+            'time' => 'required',
             'message' => 'required',
             
         ]);
 
         Appointment::insert([
-            'p_id' => $request->p_id,
-            'p_name' => $request->p_name,
-            'p_phone' => $request->p_phone,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'department' => $request->department,
             'doctor' => $request->doctor,
             'date' => $request->date,
+            'time' => $request->time,
             'message' => $request->message,
             
         ]);
   
-        return back()->with('success', 'Success! Booking Successfully');
+        return redirect()->route('pages.confirmation')->with('success', 'Success! Booking Successfully');
       }
 
 

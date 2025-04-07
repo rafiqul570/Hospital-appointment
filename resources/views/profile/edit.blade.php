@@ -28,7 +28,7 @@
 
     <!-- Update Password -->
     <h4>Change Password</h4>
-    <form action="{{ route('profile.updatePassword') }}" method="POST">
+    <form action="{{ route('admin.profile.updatePassword') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label>Current Password:</label>

@@ -27,7 +27,7 @@
     <!-- Meta -->
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
-    <title>ECOMMERCE</title>
+    <title>Book Your Consultation Online</title>
 
    
     <link rel="stylesheet" href=" https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
@@ -54,7 +54,7 @@
 
   <!-- ########## START: LEFT PANEL ########## -->
 
-    <div class="sl-logo pl-5"><span class="text-uppercase logged-name text-light mr-3">{{ Auth::user()->name }}</span></div>
+    <div class="sl-logo pl-5"><span class=" logged-name text-light mr-3">Novena heath Care</span></div>
     <div class="sl-sideleft">
       <div class="sl-sideleft-menu">
         <a href="{{route('redirects')}}" class="sl-menu-link active">
@@ -69,11 +69,11 @@
         if($role == '1'){
         ?>
 
-         <!-- <a href="../index.php" target="_blank" class="sl-menu-link">
+         <a href="{{route('homePage')}}" target="_blank" class="sl-menu-link">
           <div class="sl-menu-item">
             <span class="menu-item-label">Visite Site</span>
           </div>
-        </a> -->
+        </a>
 
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -88,37 +88,45 @@
 
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
-            <span class="menu-item-label">Patient</span>
+            <span class="menu-item-label">Doctor</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div>
         </a>
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('appointment.create')}}" class="nav-link">Add Patient</a></li>
-          <li class="nav-item"><a href="{{route('appointment.index')}}" class="nav-link">All Product</a></li>
+          <li class="nav-item"><a href="{{route('doctor.create')}}" class="nav-link">Add New Doctor</a></li>
+          <li class="nav-item"><a href="{{route('doctor.index')}}" class="nav-link">All Doctor</a></li>
         </ul>
 
-       <?php }else{ ?>
-          <label class="sidebar-label"></label>
-           <a href="#" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <span class="menu-item-label">Orders</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
 
-        <label class="sidebar-label"></label>
-           <a href="#" class="sl-menu-link">
+        <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
-            <span class="menu-item-label">Orders</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
+            <span class="menu-item-label">Department</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div>
+        </a>
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('department.create')}}" class="nav-link">Add New Department</a></li>
+          <li class="nav-item"><a href="{{route('department.index')}}" class="nav-link">All Department</a></li>
+        </ul>
 
-        <label class="sidebar-label"></label>
-           <a href="#" class="sl-menu-link">
+        <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
-            <span class="menu-item-label">Orders</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
+            <span class="menu-item-label">Blog Post</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div>
+        </a>
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('post.create')}}" class="nav-link">Add New Blog</a></li>
+          <li class="nav-item"><a href="{{route('post.index')}}" class="nav-link">All Blog</a></li>
+        </ul>
 
+
+        <a href="{{route('appointment.index')}}" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <span class="menu-item-label">Patient Details</span>
+          </div>
+        </a>
+          
       <?php } ?>
 
       </div><!-- sl-sideleft-menu -->

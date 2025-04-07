@@ -1,140 +1,478 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Your Consultation Online</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .hero-section {
-            height: 92vh;
-            background: url("{{asset('frontend/img/hero.jpg')}}")no-repeat center center/cover;
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+@php
+  $allCategory = App\Models\Category::latest()->get();      
+  $allDoctor = App\Models\Doctor::latest()->get();   
+@endphp
+@include('pages.inc.header');
 
-        .navbar a{
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{route('appointment.index')}}">ConsultNow</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav m-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                </ul>
-                <div>
-                    <a href="{{route('login')}}" class=" me-2">Login</a>
-                    <a href="{{route('register')}}" class="">Register</a>
+<!-- Slider Start -->
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-xl-7">
+                <div class="block">
+                    <div class="divider mb-3"></div>
+                    <span class="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
+                    <h1 class="mb-3 mt-3">Book Your Consultation Online</h1>
+                    
+                    <p class="mb-4 pr-5">Get expert advice from professionals anytime, anywhere.</p>
+                    <div class="btn-container ">
+                        <a href="{{ route('appointment.create') }}" class="btn btn-main-2 btn-icon btn-round-full">Book appoinment <i class="icofont-simple-right ml-2  "></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    
-    <div class="hero-section">
-        <div class="container">
-            <h1 class="display-4">Book Your Consultation Online</h1>
-            <p class="lead">Get expert advice from professionals anytime, anywhere.</p>
-            <a href="{{ route('appointment.create') }}" class="btn btn-primary btn-lg">Book Appointment</a>
+    </div>
+</section>
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="feature-block d-lg-flex">
+                    <div class="feature-item mb-5 mb-lg-0">
+                        <div class="feature-icon mb-4">
+                            <i class="icofont-surgeon-alt"></i>
+                        </div>
+                        <span>24 Hours Service</span>
+                        <h4 class="mb-3">Online Appoinment</h4>
+                        <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
+                        <a href="{{ route('appointment.create') }}" class="btn btn-main btn-round-full">Make a appoinment</a>
+                    </div>
+                
+                    <div class="feature-item mb-5 mb-lg-0">
+                        <div class="feature-icon mb-4">
+                            <i class="icofont-ui-clock"></i>
+                        </div>
+                        <span>Timing schedule</span>
+                        <h4 class="mb-3">Working Hours</h4>
+                        <ul class="w-hours list-unstyled">
+                            <li class="d-flex justify-content-between">Sun - Wed : <span>8:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Thu - Fri : <span>9:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Sat - sun : <span>10:00 - 17:00</span></li>
+                        </ul>
+                    </div>
+                
+                    <div class="feature-item mb-5 mb-lg-0">
+                        <div class="feature-icon mb-4">
+                            <i class="icofont-support"></i>
+                        </div>
+                        <span>Emegency Cases</span>
+                        <h4 class="mb-3">1-800-700-6200</h4>
+                        <p>Get ALl time support for emergency.We have introduced the principle of family medicine.Get Conneted with us for any urgency .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="about-img">
+                    <img src="{{asset('frontend/images/about/img-1.jpg')}}" alt="" class="img-fluid">
+                    <img src="{{asset('frontend/images/about/img-2.jpg')}}" alt="" class="img-fluid mt-4">
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="about-img mt-4 mt-lg-0">
+                    <img src="{{asset('frontend/images/about/img-3.jpg')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="about-content pl-4 mt-4 mt-lg-0">
+                    <h2 class="title-color">Personal care <br>& healthy living</h2>
+                    <p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
+
+                    <a href="{{route('pages.services')}}" class="btn btn-main-2 btn-round-full btn-icon">Services<i class="icofont-simple-right ml-3"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section ">
+    <div class="container">
+        <div class="cta position-relative">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="counter-stat">
+                        <i class="icofont-doctor"></i>
+                        <span class="h3 counter" data-count="58">0</span>k
+                        <p>Happy People</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="counter-stat">
+                        <i class="icofont-flag"></i>
+                        <span class="h3 counter" data-count="700">0</span>+
+                        <p>Surgery Comepleted</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="counter-stat">
+                        <i class="icofont-badge"></i>
+                        <span class="h3 counter" data-count="40">0</span>+
+                        <p>Expert Doctors</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="counter-stat">
+                        <i class="icofont-globe"></i>
+                        <span class="h3 counter" data-count="20">0</span>
+                        <p>Worldwide Branch</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section service gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <div class="section-title">
+                    <h2>Award winning patient care</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-laboratory text-lg"></i>
+                        <h4 class="mt-3 mb-3">Laboratory services</h4>
+                    </div>
+
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-heart-beat-alt text-lg"></i>
+                        <h4 class="mt-3 mb-3">Heart Disease</h4>
+                    </div>
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-tooth text-lg"></i>
+                        <h4 class="mt-3 mb-3">Dental Care</h4>
+                    </div>
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-crutch text-lg"></i>
+                        <h4 class="mt-3 mb-3">Body Surgery</h4>
+                    </div>
+
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-brain-alt text-lg"></i>
+                        <h4 class="mt-3 mb-3">Neurology Sargery</h4>
+                    </div>
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="service-item mb-4">
+                    <div class="icon d-flex align-items-center">
+                        <i class="icofont-dna-alt-1 text-lg"></i>
+                        <h4 class="mt-3 mb-3">Gynecology</h4>
+                    </div>
+                    <div class="content">
+                        <p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section appoinment">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="appoinment-content">
+                    <img src="{{asset('frontend/images/about/img-3.jpg')}}" alt="" class="img-fluid">
+                    <div class="emergency">
+                        <h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>+23 345 67980</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 col-md-10 ">
+              <div class="appoinment-wrap mt-5 mt-lg-0">
+                <h3 class="mb-2 title-color">Book an appointment</h3>
+                <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . </p>
+                </div> 
+               <form action="{{route('appointment.store')}}"  method="POST">
+                 @csrf
+                 <div class="col-lg-12">
+                    <div class="form-group mg-b-10-force">
+                      <label class="form-control-label">Department</label>
+                      <select class="form-control select2" name="department" data-placeholder="Choose one"
+                      data-parsley-class-handler="#slWrapper"
+                      data-parsley-errors-container="#slErrorContainer" required>
+                      <option selected="" disabled="">Select Department</option>
+                      @foreach ($allCategory as $data)
+                      <option value="{{$data->category_name}}">{{$data->category_name}}</option>
+                      @endforeach
+                      </select>
+                    </div>
+                    </div><!-- col-12 -->
+            
+            
+                     <div class="col-lg-12">
+                        <div class="form-group mg-b-10-force">
+                          <label class="form-control-label">Doctor</label>
+                          <select class="form-control select2" name="doctor" data-placeholder="Choose one"
+                          data-parsley-class-handler="#slWrapper"
+                          data-parsley-errors-container="#slErrorContainer" required>
+                          <option selected="" disabled="">Select Doctor</option>
+                          @foreach ($allDoctor as $data)
+                          <option value="{{$data->title}}">{{$data->title}}</option>
+                          @endforeach
+                          </select>
+                        </div>
+                      </div><!-- col-12 -->
+            
+
+               
+                    <div class="form-group">
+                        <input name="date" id="date" type="date" class="form-control" placeholder="dd/mm/yyyy" :value="old('date')" required autofocus autocomplete="category" >
+                         <x-input-error :messages="$errors->get('date')" class="mt-2" />
+                    </div>
+          
+               
+                    <div class="form-group">
+                        <input name="time" id="time" type="time" class="form-control" placeholder="Time" :value="old('time')" required autofocus autocomplete="category" >
+                         <x-input-error :messages="$errors->get('time')" class="mt-2" />
+                    </div>
+            
+                  <div class="form-group">
+                        <input name="name" id="name" type="text" class="form-control" placeholder="Full Name" :value="old('name')" required autofocus autocomplete="category" >
+                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
+           
+                    <div class="form-group">
+                        <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number" :value="old('phone')" required autofocus autocomplete="category" >
+                        <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                    </div>
+                   
+              
+                    <div class="form-group-2 mb-4">
+                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea :value="old('message')" required autofocus autocomplete="category" >
+                         <x-input-error :messages="$errors->get('message')" class="mt-2" />
+                    </div>
+
+                    <button type="submit" class="btn btn-main btn-round-full" style="cursor: pointer;">Book Appoinment</button>
+                </form>
+             </div>
+           </div>
+        </div>
+    </div>
+</section>
+
+<section class="section testimonial-2 gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="section-title text-center">
+                    <h2>We served over 5000+ Patients</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Services Section -->
-    <section class="bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Our Services</h2>
-            <div class="row gy-4">
-                <div class="col-md-4" style="overflow: hidden;">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Get expert advice on various health issues.</p>
-                        </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 testimonial-wrap-2">
+                <div class="testimonial-block style-2  gray-bg">
+                    <i class="icofont-quote-right"></i>
+
+                    <div class="testimonial-thumb">
+                        <img src="{{asset('frontend/images/team/test-thumb1.jpg')}}" alt="" class="img-fluid">
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center"><img src="{{asset('frontend/img/doctor/doc2.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Professional counseling for mental</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Book a consultation with medical specialists.</p>
-                        </div>
+
+                    <div class="client-info ">
+                        <h4>Amazing service!</h4>
+                        <span>John Partho</span>
+                        <p>
+                            They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
+                        </p>
                     </div>
                 </div>
 
-                  <div class="col-md-4" style="overflow: hidden;">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Get expert advice on various health issues.</p>
-                        </div>
+                <div class="testimonial-block style-2  gray-bg">
+                    <div class="testimonial-thumb">
+                        <img src="{{asset('frontend/images/team/test-thumb2.jpg')}}" alt="" class="img-fluid">
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center"><img src="{{asset('frontend/img/doctor/doc2.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Professional counseling for mental</p>
-                        </div>
+
+                    <div class="client-info">
+                        <h4>Expert doctors!</h4>
+                        <span>Mullar Sarth</span>
+                        <p>
+                            They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
+                        </p>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Book a consultation with medical specialists.</p>
-                        </div>
-                    </div>
+                    
+                    <i class="icofont-quote-right"></i>
                 </div>
 
-                  <div class="col-md-4" style="overflow: hidden;">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Get expert advice on various health issues.</p>
-                        </div>
+                <div class="testimonial-block style-2  gray-bg">
+                    <div class="testimonial-thumb">
+                        <img src="{{asset('frontend/images/team/test-thumb3.jpg')}}" alt="" class="img-fluid">
                     </div>
+
+                    <div class="client-info">
+                        <h4>Good Support!</h4>
+                        <span>Kolis Mullar</span>
+                        <p>
+                            They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
+                        </p>
+                    </div>
+                    
+                    <i class="icofont-quote-right"></i>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center"><img src="{{asset('frontend/img/doctor/doc2.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Professional counseling for mental</p>
-                        </div>
+
+                <div class="testimonial-block style-2  gray-bg">
+                    <div class="testimonial-thumb">
+                        <img src="{{asset('frontend/images/team/test-thumb4.jpg')}}" alt="" class="img-fluid">
                     </div>
+
+                    <div class="client-info">
+                        <h4>Nice Environment!</h4>
+                        <span>Partho Sarothi</span>
+                        <p class="mt-4">
+                            They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
+                        </p>
+                    </div>
+                    <i class="icofont-quote-right"></i>
                 </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <img src="{{asset('frontend/img/doctor/doc1.jpg')}}" no-repeat center center/cover width="100%">
-                            <p class="card-text">Book a consultation with medical specialists.</p>
-                        </div>
+
+                <div class="testimonial-block style-2  gray-bg">
+                    <div class="testimonial-thumb">
+                        <img src="{{asset('frontend/images/team/test-thumb1.jpg')}}" alt="" class="img-fluid">
                     </div>
+
+                    <div class="client-info">
+                        <h4>Modern Service!</h4>
+                        <span>Kolis Mullar</span>
+                        <p>
+                            They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
+                        </p>
+                    </div>
+                    <i class="icofont-quote-right"></i>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<section class="section clients">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="section-title text-center">
+                    <h2>Partners who support us</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <div class="container">
+        <div class="row clients-logo">
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/1.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/2.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/3.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/4.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/5.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/6.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/3.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/4.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/5.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="client-thumb">
+                    <img src="{{asset('frontend/images/about/6.png')}}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@include('pages.inc.footer');
+
+
